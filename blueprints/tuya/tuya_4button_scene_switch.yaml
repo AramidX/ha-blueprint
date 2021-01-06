@@ -12,7 +12,7 @@ blueprint:
           manufacturer: _TZ3000_vp6clf9d
           model: TS0044
     button_one_short_press:
-      name: Single Press
+      name: Short Press
       description: Action to run on button 1 short press
       default: []
       selector:
@@ -30,7 +30,7 @@ blueprint:
       selector:
         action: {}
     button_two_short_press:
-      name: Single Press
+      name: Short Press
       description: Action to run on button 2 short press
       default: []
       selector:
@@ -48,7 +48,7 @@ blueprint:
       selector:
         action: {}
     button_three_short_press:
-      name: Single Press
+      name: Short Press
       description: Action to run on button 3 short press
       default: []
       selector:
@@ -66,7 +66,7 @@ blueprint:
       selector:
         action: {}
     button_four_short_press:
-      name: Single Press
+      name: Short Press
       description: Action to run on button 4 short press
       default: []
       selector:
