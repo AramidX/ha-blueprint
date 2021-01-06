@@ -108,18 +108,6 @@ action:
         - '{{ command == ''remote_button_short_press'' and endpoint_id == 4 }}'
       sequence: !input 'button_four_short_press'
     - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 1 }}'
-      sequence: !input 'button_one_long_press'
-    - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 2 }}'
-      sequence: !input 'button_two_long_press'
-    - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 3 }}'
-      sequence: !input 'button_three_long_press'
-    - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 4 }}'
-      sequence: !input 'button_four_long_press'
-    - conditions:
         - '{{ command == ''remote_button_double_press'' and endpoint_id == 1 }}'
       sequence: !input 'button_one_double_press'
     - conditions:
@@ -131,3 +119,15 @@ action:
     - conditions:
         - '{{ command == ''remote_button_double_press'' and endpoint_id == 4 }}'
       sequence: !input 'button_four_double_press'
+    - conditions:
+        - '{{ command == ''remote_button_long_press'' and endpoint_id == 1 }}'
+      sequence: !input 'button_one_long_press'
+    - conditions:
+        - '{{ command == ''remote_button_long_press'' and endpoint_id == 2 }}'
+      sequence: !input 'button_two_long_press'
+    - conditions:
+        - '{{ command == ''remote_button_long_press'' and endpoint_id == 3 }}'
+      sequence: !input 'button_three_long_press'
+    - conditions:
+        - '{{ command == ''remote_button_long_press'' and endpoint_id == 4 }}'
+      sequence: !input 'button_four_long_press'
