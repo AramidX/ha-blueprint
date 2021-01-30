@@ -91,7 +91,7 @@ trigger:
   entity_id: !input 'switch'
   attribute: action
 action:
-- variables:
+  - variables:
     command: '{{ trigger.to_state.state }}'
   - choose:
       - conditions: 
