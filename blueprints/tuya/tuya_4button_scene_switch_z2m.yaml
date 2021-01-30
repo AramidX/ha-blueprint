@@ -3,7 +3,7 @@ blueprint:
   description: Automate your Tuya 4-Button Scene Switch via Zigbee2MQTT.
   domain: automation
   input:
-    tuya_4button_scene_switch:
+    switch:
       name: Tuya 4-Button Scene Switch
       description: Tuya 4-Button Scene Switch to use
       selector:
@@ -88,7 +88,7 @@ mode: restart
 max_exceeded: silent
 trigger:
 - platform: state
-  entity_id: !input "tuya_4button_scene_switch"
+  entity_id: !input 'switch'
   attribute: action
 action:
 - variables:
