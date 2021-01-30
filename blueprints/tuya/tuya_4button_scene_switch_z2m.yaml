@@ -7,10 +7,9 @@ blueprint:
       name: Tuya 4-Button Scene Switch
       description: Tuya 4-Button Scene Switch to use
       selector:
-        device:
+        entity:
           integration: mqtt
-          manufacturer: TuYa
-          model: Wireless switch with 4 buttons (TS0044)
+          domain: sensor
     button_one_short_press:
       name: Single Press - Button 1
       description: Action to run on button 1 (lower-left) single press
