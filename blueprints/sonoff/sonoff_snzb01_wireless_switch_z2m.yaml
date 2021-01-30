@@ -1,0 +1,50 @@
+blueprint:
+  name: Zigbee2MQTT - Sonoff SNZB-01 Zigbee Wireless Switch
+  description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch via Zigbee2MQTT.
+  domain: automation
+  input:
+    switch:
+      name: Sonoff SNZB-01 Zigbee Wireless Switch
+      description: Sonoff SNZB-01 Zigbee Wireless Switch to use
+      selector:
+        entity:
+          integration: mqtt
+          domain: sensor
+    single_press:
+      name: Single Press
+      description: Action to run on single press
+      default: []
+      selector:
+        action: {}
+    double_press:
+      name: Double Press
+      description: Action to run on double press
+      default: []
+      selector:
+        action: {}
+    long_press:
+      name: Long Press
+      description: Action to run on long press (4 seconds)
+      default: []
+      selector:
+        action: {}
+  source_url: https://github.com/AramidX/ha-blueprint/blob/main/blueprints/sonoff/sonoff_snzb01_wireless_switch_z2m.yaml
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input "switch"
+  attribute: action
+action:
+- variables:
+    command: "{{ trigger.to_state.state }}"
+- choose:
+  - conditions: 
+    - "{{ command == 'single' }}"
+    sequence: !input "single_press"
+  - conditions: 
+    - "{{ command == 'double' }}"
+    sequence: !input "double_press"
+  - conditions: 
+    - "{{ command == 'long' }}"
+    sequence: !input "long_press"
