@@ -36,17 +36,14 @@ trigger:
 - platform: event
   event_type: zha_event
   event_data:
-    device_id: !input "switch"
+    device_id: !input 'switch'
 action:
 - variables:
-    command: "{{ trigger.event.data.command }}"
+    command: '{{ trigger.event.data.command }}'
 - choose:
-  - conditions: 
-    - "{{ command == 'toggle' }}"
-    sequence: !input "single_press"
-  - conditions: 
-    - "{{ command == 'on' }}"
-    sequence: !input "double_press"
-  - conditions: 
-    - "{{ command == 'off' }}"
-    sequence: !input "long_press"
+  - conditions: '{{ command == ''toggle'' }}'
+    sequence: !input 'single_press'
+  - conditions: '{{ command == ''on'' }}'
+    sequence: !input 'double_press'
+  - conditions: '{{ command == ''off'' }}'
+    sequence: !input 'long_press'
