@@ -1,0 +1,52 @@
+blueprint:
+  name: ZHA - Sonoff SNZB-01 Zigbee Wireless Switch
+  description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch using ZHA events.
+  domain: automation
+  input:
+    switch:
+      name: Sonoff Zigbee Wireless Switch
+      description: Sonoff Zigbee Wireless Switch to use
+      selector:
+        device:
+          integration: zha
+          manufacturer: eWeLink
+          model: WB01
+    single_press:
+      name: Single Press
+      description: Action to run on single press
+      default: []
+      selector:
+        action: {}
+    double_press:
+      name: Double Press
+      description: Action to run on double press
+      default: []
+      selector:
+        action: {}
+    long_press:
+      name: Long Press
+      description: Action to run on long press (4 seconds)
+      default: []
+      selector:
+        action: {}
+  source_url: https://github.com/AramidX/ha-blueprint/blob/main/blueprints/sonoff/sonoff_snzb01_wireless_switch_zha.yaml
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: event
+  event_type: zha_event
+  event_data:
+    device_id: !input "switch"
+action:
+- variables:
+    command: "{{ trigger.event.command }}"
+- choose:
+  - conditions: 
+    - "{{ command == 'toggle' }}"
+    sequence: !input "single_press"
+  - conditions: 
+    - "{{ command == 'on' }}"
+    sequence: !input "double_press"
+  - conditions: 
+    - "{{ command == 'off' }}"
+    sequence: !input "long_press"
