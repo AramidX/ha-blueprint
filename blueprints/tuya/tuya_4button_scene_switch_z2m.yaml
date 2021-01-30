@@ -88,21 +88,21 @@ mode: restart
 max_exceeded: silent
 trigger:
 - platform: state
-  entity_id: !input 'switch'
+  entity_id: !input "switch"
   attribute: action
 action:
 - variables:
-    command: '{{ trigger.to_state.state }}'
+    command: "{{ trigger.to_state.state }}"
 - choose:
   - conditions: 
-    - '{{ command == ''1_single'' }}'
-    sequence: !input 'button_one_short_press'
+    - "{{ command == '1_single' }}"
+    sequence: !input "button_one_short_press"
   - conditions: 
-    - '{{ command == ''2_single'' }}'
-    sequence: !input 'button_two_short_press'
+    - "{{ command == '2_single' }}"
+    sequence: !input "button_two_short_press"
   - conditions: 
-    - '{{ command == ''3_single'' }}'
-    sequence: !input 'button_three_short_press'
+    - "{{ command == '3_single' }}"
+    sequence: !input "button_three_short_press"
   - conditions: 
-    - '{{ command == ''4_single'' }}'
-    sequence: !input 'button_four_short_press'
+    - "{{ command == '4_single' }}"
+    sequence: !input "button_four_short_press"
