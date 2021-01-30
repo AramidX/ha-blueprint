@@ -39,7 +39,7 @@ trigger:
     device_id: !input "switch"
 action:
 - variables:
-    command: "{{ trigger.event.command }}"
+    command: "{{ trigger.event.data.command }}"
 - choose:
   - conditions: 
     - "{{ command == 'toggle' }}"
