@@ -89,6 +89,10 @@ trigger:
 - platform: state
   entity_id: !input "switch"
   attribute: action
+condition:
+  - alias: "Command is not empty"
+    condition: template
+    value_template: "{{ trigger.to_state.state != 'None' and trigger.to_state.state != '' }}"
 action:
 - variables:
     command: "{{ trigger.to_state.state }}"
