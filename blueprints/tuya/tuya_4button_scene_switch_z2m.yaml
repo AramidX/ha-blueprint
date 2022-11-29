@@ -89,10 +89,17 @@ trigger:
 - platform: state
   entity_id: !input "switch"
   attribute: action
+condition:
+  - alias: "Command is not empty"
+    condition: template
+    value_template: "{{ trigger.to_state.state != 'None' and trigger.to_state.state != '' }}"
 action:
 - variables:
     command: "{{ trigger.to_state.state }}"
 - choose:
+  - conditions: 
+    - "{{ command == 'single' }}"
+    sequence: !input "button_one_short_press"
   - conditions: 
     - "{{ command == '1_single' }}"
     sequence: !input "button_one_short_press"
@@ -106,6 +113,9 @@ action:
     - "{{ command == '4_single' }}"
     sequence: !input "button_four_short_press"
   - conditions: 
+    - "{{ command == 'double' }}"
+    sequence: !input "button_one_double_press"
+  - conditions: 
     - "{{ command == '1_double' }}"
     sequence: !input "button_one_double_press"
   - conditions: 
@@ -118,6 +128,9 @@ action:
     - "{{ command == '4_double' }}"
     sequence: !input "button_four_double_press"
   - conditions: 
+    - "{{ command == 'hold' }}"
+    sequence: !input "button_one_long_press"
+  - conditions: 
     - "{{ command == '1_hold' }}"
     sequence: !input "button_one_long_press"
   - conditions: 
@@ -129,3 +142,4 @@ action:
   - conditions: 
     - "{{ command == '4_hold' }}"
     sequence: !input "button_four_long_press"
+ 
